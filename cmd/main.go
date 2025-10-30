@@ -8,6 +8,7 @@ import (
 )
 
 func main() {
+	// Set up Gin router and dependencies
 	router := gin.Default()
 	repo := &internal.Repository{}
 	svc := internal.NewService(repo)
