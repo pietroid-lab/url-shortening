@@ -9,10 +9,6 @@ import (
 
 func main() {
 	router := gin.Default()
-
-	// Create repository and service, then handler. The handler's method
-	// value (h.GetAlbums) has type func(*gin.Context), so it can be used
-	// directly as a gin handler.
 	repo := &internal.Repository{}
 	svc := internal.NewService(repo)
 	h := handler.NewHandler(svc)
