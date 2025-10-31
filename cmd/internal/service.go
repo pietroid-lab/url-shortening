@@ -1,8 +1,11 @@
 package internal
 
-import "context"
+import (
+	"context"
+)
 
 type RepositoryInterface interface {
+	SaveURL(ctx context.Context, originalURL, hash string)
 }
 
 type Service struct {
@@ -16,8 +19,9 @@ func NewService(repository RepositoryInterface) *Service {
 	return &Service{repository: repository}
 }
 
-func (s *Service) GenerateShorterURL(ctx context.Context, originaURL, slug  string ) (string, error) {
+func (s *Service) GenerateShorterURL(ctx context.Context, originaURL, slug string) (string, error) {
 
+	s.repository.SaveURL(ctx, originaURL, slug)
 
 	return "", nil
 }

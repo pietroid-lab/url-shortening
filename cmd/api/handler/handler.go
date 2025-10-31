@@ -3,7 +3,6 @@ package handler
 import (
 	"context"
 	"net/http"
-	"url-shorting/cmd/internal"
 
 	"github.com/gin-gonic/gin"
 )
