@@ -26,12 +26,12 @@ func main() {
 		log.Fatal("Error connecting to MongoDB:", err)
 		panic(err)
 	}
-	
+
 	repo := internal.NewRepository(mongoCLinet)
 	svc := internal.NewService(repo)
 	h := handler.NewHandler(svc)
 
-	router.GET("/URLs", h.GetAlbums)
+	router.POST("/URLs", h.GenerateURL)
 
 	router.Run("localhost:8080")
 }
