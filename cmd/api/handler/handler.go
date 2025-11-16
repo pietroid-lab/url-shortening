@@ -8,8 +8,8 @@ import (
 )
 
 type CreateURLRequest struct {
-	OriginalURL string `json:"originalUrl" binding:"required,url"`
-	CustomSlug  string `json:"customSlug,omitempty"`
+	OriginalURL string `json:"originalUrl"`
+	CustomSlug  string `json:"customSlug"`
 }
 
 type Service interface {
@@ -35,7 +35,7 @@ func (h *Handler) GenerateURL(c *gin.Context) {
 		return
 	}
 
-	url, err := h.service.GenerateShorterURL(ctx, req.OriginalURL, req.CustomSlug)	
+	url, err := h.service.GenerateShorterURL(ctx, req.OriginalURL, req.CustomSlug)
 	if err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{
 			"error": "Failed to generate shorter URL",
